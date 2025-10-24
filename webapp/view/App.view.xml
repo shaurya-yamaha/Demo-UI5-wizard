@@ -80,9 +80,84 @@
                             </WizardStep>
 
                             <!-- second step - document data Details -->
-                            <WizardStep ></WizardStep>
-                            <WizardStep ></WizardStep>
-                            <WizardStep ></WizardStep>
+                            <WizardStep 
+                                id="docDataStep"
+                                title="{i18n>docDataStepTitle}"
+                            >
+                                <form:SimpleForm
+                                    editable="true"
+                                    layout="ResponsiveGridLayout"
+                                >
+                                    <!-- field - service order  -->
+                                    <Label text="{i18n>serOrderNo}" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/serOrderNoState}" 
+                                        id="serOrderNo"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>serOrderNoInputText}"
+                                        value="{/serOrderNo}"/>
+
+                                    <!-- field - CPF  -->
+                                    <Label text="{i18n>cpf}" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/serOrderNoState}" 
+                                        id="cpf"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>cpfInputText}"
+                                        value="{/cpf}"/>
+
+                                    <!-- field - reference date  -->
+                                    <Label text="{i18n>refDate2}" />
+                                    <DatePicker 
+                                        id="refDate2"
+                                        displayFormat="short"
+                                        value="{/refDate2}"
+                                    />
+                                </form:SimpleForm>
+                            </WizardStep>
+
+                            <!-- third step - Item details  -->
+                            <WizardStep id="itemDataStep" title="{i18n>itemDataStepTitle}">
+                                <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                                
+                                    <!-- field - causing part  -->
+                                    <Label text="{i18n>causingPart}" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/causingPartState}" 
+                                        id="causingPart"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>causingPartInputText}"
+                                        value="{/causingPart}"/>
+
+                                    <!-- field - removed code  -->
+                                    <Label text="{i18n>removedCode}" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/removedCodeState}" 
+                                        id="removedCode"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>removedCodeInputText}"
+                                        value="{/removedCode}"/>
+
+                                    <!-- field - quantity  -->
+                                    <Label text="{i18n>quantity}" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/quantityState}" 
+                                        id="quantity"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>quantityInputText}"
+                                        value="{/quantity}"/>
+                                </form:SimpleForm>
+                            </WizardStep>
+
+                            <!-- fourth step - comments -->
+                            <WizardStep id="comments" title="{i18n>commentsSection}"></WizardStep>
+
+
                             <WizardStep ></WizardStep>
                             <WizardStep ></WizardStep>
                         </Wizard>
