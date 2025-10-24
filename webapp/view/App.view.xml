@@ -1,0 +1,95 @@
+<mvc:View
+    controllerName="ymdb_wizard.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    height="100%"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+>
+
+    <App id="app">
+        <NavContainer id="wizardNavContainer">
+            <pages>
+                <Page id="wizardContentPage" 
+                        showHeader="true" 
+                        title="{i18n>wizardTitle}"
+                        titleLevel="Auto">
+                    <content>
+
+                        <Wizard 
+                            id="WarrantyPortalWizard"
+                            class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                            complete="wizardCompletedHandler">
+
+                            <!-- first step - General Details -->
+                            <WizardStep 
+                                id="generalDetailsStep"
+                                title="{i18n>genDetailsPageTitle}"
+                                validated="false"
+                                activate="genInfoValidation">
+                                <MessageStrip 
+                                    class="sapUiSmallMarginBottom"
+                                    text="{i18n>genDetailsMessageStripText}"
+                                    showIcon="true"/>
+                                <Text 
+                                    class="sapUiSmallMarginBottom"
+                                    text="{i18n>genDetailsText}"/>
+                                <form:SimpleForm 
+                                    editable="true"
+                                    layout="ResponsiveGridLayout">
+
+                                    <!-- field - partner  -->
+                                    <Label text="{i18n>partner}" required="true" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/partnerState}" 
+                                        id="partner"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>partnerInputText}"
+                                        value="{/partner}"/>
+
+                                    <!-- field - claimType  -->
+                                    <Label text="{i18n>claimType}" required="true" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/claimTypeState}" 
+                                        id="claimType"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>claimTypeInputText}"
+                                        value="{/claimType}"/>
+
+                                    <!-- field - reference date  -->
+                                    <Label text="{i18n>refDate}" />
+                                    <DatePicker 
+                                        id="refDate"
+                                        displayFormat="short"
+                                        value="{/refDate}"
+                                    />
+
+                                    <!-- field - inventory number -->
+                                    <Label text="{i18n>invNo}" />
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/invNoState}" 
+                                        id="invNo"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>invNoInputText}"
+                                        value="{/invNo}"/>
+                                </form:SimpleForm>
+                            </WizardStep>
+
+                            <!-- second step - document data Details -->
+                            <WizardStep ></WizardStep>
+                            <WizardStep ></WizardStep>
+                            <WizardStep ></WizardStep>
+                            <WizardStep ></WizardStep>
+                            <WizardStep ></WizardStep>
+                        </Wizard>
+                    </content>
+                </Page>
+            </pages>
+    </NavContainer>
+    </App>
+    
+</mvc:View>
