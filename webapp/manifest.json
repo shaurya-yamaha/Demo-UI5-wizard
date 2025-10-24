@@ -58,7 +58,7 @@
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
                     "bundleName": "ymdb_wizard.i18n.i18n",
-                    "supportedLocales": [""],
+                    "supportedLocales": ["pt",""],
                     "fallbackLocale": ""
                 }
             }
