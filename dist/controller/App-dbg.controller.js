@@ -16,43 +16,16 @@ sap.ui.define([
             this.model = new JSONModel();
             this.model.setData({
                 vinNumberState: "Error",
-                claimTypeState: "Error",
-                vinDetailsState: "Error" 
+                claimTypeState: "Error" 
             });
             this.getView().setModel(this.model);
-
-            // data for drop dowm for claim type
-            var oClaimTypeData = {
-                "SelectedClaim" : 1,
-                "ClaimCollection": [
-                    {
-                        "claimId" : 1,
-                        "claimName" : 'Claim Type 1'
-                    },
-                    {
-                        "claimId" : 2,
-                        "claimName" : 'Claim Type 2'
-                    },
-                    {
-                        "claimId" : 3,
-                        "claimName" : 'Claim Type 3'
-                    },
-                    {
-                        "claimId" : 4,
-                        "claimName" : 'Claim Type 4'
-                    }
-                ]
-            }
-
-            var oClaimTypeModel = new JSONModel(oClaimTypeData);
-            this.getView().setModel(oClaimTypeModel);
         },
 
         // to validate fields of step 1
         genInfoValidation() {
             var vinNumberName = this.byId("vinNumber").getValue();
-            var claimTypeName = this.byId("claimType").getSelectedKey();
-            var vinDetailsValue = this.byId("vinDetails").getValue();
+            var claimTypeName = this.byId("claimType").getValue();
+            var refDate = this.byId("refDate").getValue();
 
             // if vinNumberName is empty 
             if(vinNumberName.length == 0) {
@@ -70,16 +43,8 @@ sap.ui.define([
                 this.model.setProperty("/claimTypeState", "None");
             }
 
-            // if vin details is empty
-            if(vinDetailsValue.length === 0){
-                this._wizard.setCurrentStep(this.byId("generalDetailsStep"));
-                this.model.setProperty("/vinDetailsState", "Error");
-            } else {
-                this.model.setProperty("/vinDetailsState", "None");
-            }
-
             // to validate the wizard step
-            if(vinNumberName.length == 0 || claimTypeName.length == 0 || vinDetailsValue.length == 0) {
+            if(vinNumberName.length == 0 || claimTypeName.length == 0) {
                 this._wizard.invalidateStep(this.byId("generalDetailsStep"));
             } else {
                 this._wizard.validateStep(this.byId("generalDetailsStep"));

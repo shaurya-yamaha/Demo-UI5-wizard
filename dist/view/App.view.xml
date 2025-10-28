@@ -40,46 +40,41 @@
 
                                     <!-- field - claimType  -->
                                     <Label text="{i18n>claimType}" required="true" />
-                                    <Select
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/claimTypeState}" 
                                         id="claimType"
-                                        selectedKey="{/SelectedClaim}"
-                                        items="{
-                                            path: '/ClaimCollection',
-                                            sorter: { path: 'claimName' }
-                                        }">
-                                        <core:Item key="{claimId}" text="{claimName}" />
-                                    </Select>
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>claimTypeInputText}"
+                                        value="{/claimType}"/>
 
-
-                                    <!-- field - vin number  -->
+                                    <!-- field - partner  -->
                                     <Label text="{i18n>vinNumber}" required="true" />
                                     <Input 
                                         valueStateText="{i18n>notNullText}"
                                         valueState="{/vinNumberState}" 
-                                        id="vinNumber"
+                                        id="partner"
                                         liveChange="genInfoValidation"
                                         placeholder="{i18n>vinNumberInputText}"
                                         value="{/vinNumber}"/>
 
-                                    <!-- field - vin details  -->
-                                    <Label text="{i18n>vinDetails}" required="true" />
-                                    <Input 
-                                        valueStateText="{i18n>notNullText}"
-                                        valueState="{/vinDetailsState}" 
-                                        id="vinDetails"
-                                        liveChange="genInfoValidation"
-                                        placeholder="{i18n>vinDetailsInputText}"
-                                        value="{/vinDetails}"/>
+                                    <!-- field - reference date  -->
+                                    <Label text="{i18n>refDate}" />
+                                    <DatePicker 
+                                        id="refDate"
+                                        displayFormat="short"
+                                        value="{/refDate}"
+                                    />
 
                                     <!-- field - inventory number -->
-                                    <!-- <Label text="{i18n>invNo}" />
+                                    <Label text="{i18n>invNo}" />
                                     <Input 
                                         valueStateText="{i18n>notNullText}"
                                         valueState="{/invNoState}" 
                                         id="invNo"
                                         liveChange="genInfoValidation"
                                         placeholder="{i18n>invNoInputText}"
-                                        value="{/invNo}"/> -->
+                                        value="{/invNo}"/>
                                 </form:SimpleForm>
                             </WizardStep>
 
@@ -170,7 +165,7 @@
                                 <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
 
                                     <!-- field - upload files  -->
-                                    <Label text="{i18n>uploadSectionTitle}"></Label>
+                                    <Label text="{18n>uploadSectionTitle}"></Label>
                                     <u:FileUploader 
                                         width="100%"
                                         style="Emphasized"
@@ -198,11 +193,11 @@
                                             <Label text="{i18n>vinNumber}" />
                                             <Text id="vinNumberChosen" text="{/vinNumber}"></Text>
 
-                                            <Label text="{i18n>vinDetails}" />
-                                            <Text id="vinDetailsChosen" text="{/vinDetails}"></Text>
+                                            <Label text="{i18n>refDate}" />
+                                            <Text id="refDateChosen" text="{/refDate}"></Text>
 
-                                            <!-- <Label text="{i18n>invNo}" />
-                                            <Text id="invNoChosen" text="{/invNo}"></Text> -->
+                                            <Label text="{i18n>invNo}" />
+                                            <Text id="invNoChosen" text="{/invNo}"></Text>
                                         </form:content>
                                     </form:SimpleForm>
 
