@@ -179,7 +179,40 @@
                                     <!-- <Label text="{i18n>comments}" />
                                     <TextArea id="comments" rows="8" value="{/comments}" /> -->
 
-                                    
+                                    <VBox class="sapUiSmallMarginTop" width="90%">
+                                        <Panel expandable="true" 
+                                                width="100%" 
+                                                class="sapUiResponsiveMargin"
+                                                headerText="{i18n>partsPanelTitle}">
+
+                                                <Table id="partsTable" inset="false">
+                                                    <columns>
+                                                        <Column> <Text text="Item Number" /> </Column>
+                                                        <Column> <Text text="Quantity" /> </Column>
+                                                        <Column> <Text text="Part Return" /> </Column>
+                                                    </columns>
+
+                                                    <items>
+
+                                                    </items>
+                                                </Table>
+                                        </Panel>
+
+                                        <Panel expandable="true" 
+                                                width="100%" 
+                                                class="sapUiResponsiveMargin"
+                                                headerText="{i18n>servicesPanelTitle}">
+                                                
+                                        </Panel>
+
+                                        <Panel expandable="true" 
+                                                width="100%" 
+                                                class="sapUiResponsiveMargin"
+                                                headerText="{i18n>subletPanelTitle}">
+                                                
+                                        </Panel>
+                                    </VBox>
+
                                 </form:SimpleForm>
                             </WizardStep>
 
