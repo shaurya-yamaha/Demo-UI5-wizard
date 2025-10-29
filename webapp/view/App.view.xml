@@ -50,40 +50,30 @@
                                         <core:Item key="{claimId}" text="{claimName}" />
                                     </Select>
 
-
                                     <!-- field - vin number  -->
-                                    <Label text="{i18n>vinNumber}" required="true" />
-                                    <Input 
+                                    <Label text="{i18n>vinNumber}" required="true" class="sapUiSmallMarginTop"/>
+                                    <!-- <Input 
                                         valueStateText="{i18n>notNullText}"
                                         valueState="{/vinNumberState}" 
                                         id="vinNumber"
                                         liveChange="genInfoValidation"
                                         placeholder="{i18n>vinNumberInputText}"
-                                        value="{/vinNumber}"/>
-
-                                    <!-- field - vin details  -->
-                                    <Label text="{i18n>vinDetails}" required="true" />
-                                    <Input 
-                                        valueStateText="{i18n>notNullText}"
-                                        valueState="{/vinDetailsState}" 
-                                        id="vinDetails"
-                                        liveChange="genInfoValidation"
-                                        placeholder="{i18n>vinDetailsInputText}"
-                                        value="{/vinDetails}"/>
-
-                                    <!-- field - inventory number -->
-                                    <!-- <Label text="{i18n>invNo}" />
-                                    <Input 
-                                        valueStateText="{i18n>notNullText}"
-                                        valueState="{/invNoState}" 
-                                        id="invNo"
-                                        liveChange="genInfoValidation"
-                                        placeholder="{i18n>invNoInputText}"
-                                        value="{/invNo}"/> -->
+                                        value="{/vinNumber}"/> -->
+                                    <SearchField width="100%" class="sapUiSmallMarginTop" />
                                 </form:SimpleForm>
+                                
+                                <HBox
+                                    justifyContent="End"
+                                    width="100%"
+                                    class="sapUiSmallMarginTop sapUiNoContentPadding sapUiTinyMarginEnd">
+                                    <Button
+                                        text="{i18n>buttonText}"
+                                        type="Emphasized"
+                                        press="onPress" />
+                                </HBox>
                             </WizardStep>
-
-                            <!-- second step - document data Details -->
+                            
+                            <!-- second step - Header Details -->
                             <WizardStep id="docDataStep" title="{i18n>docDataStepTitle}">
                                 <form:SimpleForm
                                     editable="true"
@@ -198,8 +188,8 @@
                                             <Label text="{i18n>vinNumber}" />
                                             <Text id="vinNumberChosen" text="{/vinNumber}"></Text>
 
-                                            <Label text="{i18n>vinDetails}" />
-                                            <Text id="vinDetailsChosen" text="{/vinDetails}"></Text>
+                                            <!-- <Label text="{i18n>vinDetails}" />
+                                            <Text id="vinDetailsChosen" text="{/vinDetails}"></Text> -->
 
                                             <!-- <Label text="{i18n>invNo}" />
                                             <Text id="invNoChosen" text="{/invNo}"></Text> -->

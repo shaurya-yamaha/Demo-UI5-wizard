@@ -15,9 +15,8 @@ sap.ui.define([
             this._oWizardContentpage = this.byId("wizardContentPage");
             this.model = new JSONModel();
             this.model.setData({
-                vinNumberState: "Error",
-                claimTypeState: "Error",
-                vinDetailsState: "Error" 
+                // vinNumberState: "Error",
+                claimTypeState: "Error"
             });
             this.getView().setModel(this.model);
 
@@ -27,40 +26,49 @@ sap.ui.define([
                 "ClaimCollection": [
                     {
                         "claimId" : 1,
-                        "claimName" : 'Claim Type 1'
+                        "claimName" : "Regular"
                     },
                     {
                         "claimId" : 2,
-                        "claimName" : 'Claim Type 2'
+                        "claimName" : "Recall"
                     },
                     {
                         "claimId" : 3,
-                        "claimName" : 'Claim Type 3'
+                        "claimName" : "Auth"
                     },
                     {
                         "claimId" : 4,
-                        "claimName" : 'Claim Type 4'
+                        "claimName" : "Goodwill"
+                    },
+                    {
+                        "claimId" : 5,
+                        "claimName" : "P&A"
                     }
                 ]
             }
 
             var oClaimTypeModel = new JSONModel(oClaimTypeData);
             this.getView().setModel(oClaimTypeModel);
+
+            const i18nModel = new ResourceModel({
+                bundleName: "ymdb_wizard.i18n.i18n"
+            });
+            this.getView().setModel(i18nModel, "i18n");            
         },
 
         // to validate fields of step 1
         genInfoValidation() {
-            var vinNumberName = this.byId("vinNumber").getValue();
+            // var vinNumberName = this.byId("vinNumber").getValue();
             var claimTypeName = this.byId("claimType").getSelectedKey();
-            var vinDetailsValue = this.byId("vinDetails").getValue();
+            // var vinDetailsValue = this.byId("vinDetails").getValue();
 
             // if vinNumberName is empty 
-            if(vinNumberName.length == 0) {
-                this._wizard.setCurrentStep(this.byId("generalDetailsStep"));
-                this.model.setProperty("/vinNumberState", "Error");
-            } else {
-                this.model.setProperty("/vinNumberState", "None");
-            }
+            // if(vinNumberName.length == 0) {
+            //     this._wizard.setCurrentStep(this.byId("generalDetailsStep"));
+            //     this.model.setProperty("/vinNumberState", "Error");
+            // } else {
+            //     this.model.setProperty("/vinNumberState", "None");
+            // }
 
             // if claimType name is empty 
             if(claimTypeName.length == 0) {
@@ -71,19 +79,23 @@ sap.ui.define([
             }
 
             // if vin details is empty
-            if(vinDetailsValue.length === 0){
-                this._wizard.setCurrentStep(this.byId("generalDetailsStep"));
-                this.model.setProperty("/vinDetailsState", "Error");
-            } else {
-                this.model.setProperty("/vinDetailsState", "None");
-            }
+            // if(vinDetailsValue.length === 0){
+            //     this._wizard.setCurrentStep(this.byId("generalDetailsStep"));
+            //     this.model.setProperty("/vinDetailsState", "Error");
+            // } else {
+            //     this.model.setProperty("/vinDetailsState", "None");
+            // }
 
             // to validate the wizard step
-            if(vinNumberName.length == 0 || claimTypeName.length == 0 || vinDetailsValue.length == 0) {
+            if(claimTypeName.length == 0) {
                 this._wizard.invalidateStep(this.byId("generalDetailsStep"));
             } else {
                 this._wizard.validateStep(this.byId("generalDetailsStep"));
             }
+        },
+
+        onPress: function(evt) {
+            MessageToast.show('Repair History Clicked!!!');
         }
     });
 });
