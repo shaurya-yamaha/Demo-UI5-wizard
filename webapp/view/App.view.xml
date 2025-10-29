@@ -72,15 +72,39 @@
                                         press="onPress" />
                                 </HBox>
                             </WizardStep>
-                            
+
                             <!-- second step - Header Details -->
                             <WizardStep id="docDataStep" title="{i18n>docDataStepTitle}">
                                 <form:SimpleForm
                                     editable="true"
-                                    layout="ResponsiveGridLayout"
-                                >
-                                    <!-- field - service order  -->
-                                    <Label text="{i18n>serOrderNo}" />
+                                    layout="ResponsiveGridLayout">
+
+                                    <!-- field - repair start date  -->
+                                    <Label text="{i18n>repStartDate}" required="true"/>
+                                    <DatePicker 
+                                        id="repStartDate"
+                                        displayFormat="short"
+                                        value="{/repStartDate}"/>
+
+                                    <!-- field - repair end date  -->
+                                    <Label text="{i18n>repEndDate}" required="true"/>
+                                    <DatePicker 
+                                        id="repEndDate"
+                                        displayFormat="short"
+                                        value="{/repEndDate}"/>
+
+                                    <!-- field - odometer reading  -->
+                                    <Label text="{i18n>odoReading}" required="true"/>
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/odoReadingState}" 
+                                        id="odoReading"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>odoReadingInputText}"
+                                        value="{/odoReading}"/>
+
+                                    <!-- field - service order number -->
+                                    <Label text="{i18n>serOrderNo}" required="true"/>
                                     <Input 
                                         valueStateText="{i18n>notNullText}"
                                         valueState="{/serOrderNoState}" 
@@ -89,23 +113,25 @@
                                         placeholder="{i18n>serOrderNoInputText}"
                                         value="{/serOrderNo}"/>
 
-                                    <!-- field - CPF  -->
-                                    <Label text="{i18n>cpf}" />
+                                    <!-- field - distributor -->
+                                    <Label text="{i18n>distributor}" required="true"/>
                                     <Input 
                                         valueStateText="{i18n>notNullText}"
-                                        valueState="{/serOrderNoState}" 
-                                        id="cpf"
+                                        valueState="{/distributorState}" 
+                                        id="distributor"
                                         liveChange="genInfoValidation"
-                                        placeholder="{i18n>cpfInputText}"
-                                        value="{/cpf}"/>
+                                        placeholder="{i18n>distributorInputText}"
+                                        value="{/distributor}"/>
 
-                                    <!-- field - reference date  -->
-                                    <Label text="{i18n>refDate2}" />
-                                    <DatePicker 
-                                        id="refDate2"
-                                        displayFormat="short"
-                                        value="{/refDate2}"
-                                    />
+                                    <!-- field - campaignNo -->
+                                    <Label text="{i18n>campaignNo}" required="true"/>
+                                    <Input 
+                                        valueStateText="{i18n>notNullText}"
+                                        valueState="{/campaignNoState}" 
+                                        id="campaignNo"
+                                        liveChange="genInfoValidation"
+                                        placeholder="{i18n>campaignNoInputText}"
+                                        value="{/campaignNo}"/>
                                 </form:SimpleForm>
                             </WizardStep>
 
@@ -190,9 +216,6 @@
 
                                             <!-- <Label text="{i18n>vinDetails}" />
                                             <Text id="vinDetailsChosen" text="{/vinDetails}"></Text> -->
-
-                                            <!-- <Label text="{i18n>invNo}" />
-                                            <Text id="invNoChosen" text="{/invNo}"></Text> -->
                                         </form:content>
                                     </form:SimpleForm>
 
@@ -202,14 +225,23 @@
                                         editable="false"
                                         layout="ResponsiveGridLayout">
                                         <form:content>
+                                            <Label text="{i18n>repStartDate}" />
+                                            <Text id="repStartDateChosen" text="{/repStartDate}"></Text>
+
+                                            <Label text="{i18n>repEndDate}" />
+                                            <Text id="repEndDateChosen" text="{/repEndDate}"></Text>
+
+                                            <Label text="{i18n>odoReading}" />
+                                            <Text id="odoReadingChosen" text="{/odoReading}"></Text>
+
                                             <Label text="{i18n>serOrderNo}" />
-                                            <Text id="serOrderChosen" text="{/serOrderNo}"></Text>
+                                            <Text id="serOrderNoChosen" text="{/serOrderNo}"></Text>
 
-                                            <Label text="{i18n>cpf}" />
-                                            <Text id="cpfChosen" text="{/cpf}"></Text>
+                                            <Label text="{i18n>distributor}" />
+                                            <Text id="distributorChosen" text="{/distributor}"></Text>
 
-                                            <Label text="{i18n>refDate2}" />
-                                            <Text id="refDate2Chosen" text="{/refDate2}"></Text>
+                                            <Label text="{i18n>campaignNo}" />
+                                            <Text id="campaignNoChosen" text="{/campaignNo}"></Text>
                                         </form:content>
                                     </form:SimpleForm>
 

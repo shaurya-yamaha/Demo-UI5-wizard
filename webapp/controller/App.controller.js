@@ -78,14 +78,6 @@ sap.ui.define([
                 this.model.setProperty("/claimTypeState", "None");
             }
 
-            // if vin details is empty
-            // if(vinDetailsValue.length === 0){
-            //     this._wizard.setCurrentStep(this.byId("generalDetailsStep"));
-            //     this.model.setProperty("/vinDetailsState", "Error");
-            // } else {
-            //     this.model.setProperty("/vinDetailsState", "None");
-            // }
-
             // to validate the wizard step
             if(claimTypeName.length == 0) {
                 this._wizard.invalidateStep(this.byId("generalDetailsStep"));
@@ -99,28 +91,3 @@ sap.ui.define([
         }
     });
 });
-
-// onInit() {
-    //     const oData = {
-    //         recipient : {
-    //             name : "Shaurya"
-    //         }
-    //     };
-
-    //     const oModel = new JSONModel(oData);
-    //     this.getView().setModel(oModel);
-        
-    //     const i18nModel = new ResourceModel({
-    //         bundleName: "ymdb_wizard.i18n.i18n"
-    //     });
-    //     this.getView().setModel(i18nModel, "i18n");
-    // },
-
-    // onShowHello() {
-    //     // read text form i18n model
-    //     const oBundle = this.getView().getModel("i18n").getResourceBundle();
-    //     const sRecipient = this.getView().getModel().getProperty("/recipient/name");
-    //     const sMsg = oBundle.getText("helloMsg", [sRecipient]);
-
-    //     MessageToast.show(sMsg);
-    // }
