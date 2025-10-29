@@ -1,0 +1,25 @@
+{
+  "SelectedClaim" : 1,
+  "ClaimCollection": [
+      {
+          "claimId" : 1,
+          "claimName" : "Regular"
+      },
+      {
+          "claimId" : 2,
+          "claimName" : "Recall"
+      },
+      {
+          "claimId" : 3,
+          "claimName" : "Auth"
+      },
+      {
+          "claimId" : 4,
+          "claimName" : "Goodwill"
+      },
+      {
+          "claimId" : 5,
+          "claimName" : "P&A"
+      }
+  ]
+}

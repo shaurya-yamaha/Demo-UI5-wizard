@@ -135,49 +135,51 @@
                                 </form:SimpleForm>
                             </WizardStep>
 
-                            <!-- third step - Item details  -->
-                            <WizardStep id="itemDataStep" title="{i18n>itemDataStepTitle}">
+                            <!-- third step - version details  -->
+                            <WizardStep id="versionDataStep" title="{i18n>versionDataStepTitle}">
                                 <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
                                 
-                                    <!-- field - causing part  -->
-                                    <Label text="{i18n>causingPart}" />
+                                    <!-- field - PFP  -->
+                                    <Label text="{i18n>PFP}" required="true"/>
                                     <Input 
                                         valueStateText="{i18n>notNullText}"
-                                        valueState="{/causingPartState}" 
-                                        id="causingPart"
+                                        valueState="{/PFPState}" 
+                                        id="PFP"
                                         liveChange="genInfoValidation"
-                                        placeholder="{i18n>causingPartInputText}"
-                                        value="{/causingPart}"/>
+                                        placeholder="{i18n>PFPInputText}"
+                                        value="{/PFP}"/>
 
-                                    <!-- field - removed code  -->
-                                    <Label text="{i18n>removedCode}" />
+                                    <!-- field - symptoms  -->
+                                    <Label text="{i18n>symptoms}" required="true"/>
                                     <Input 
                                         valueStateText="{i18n>notNullText}"
-                                        valueState="{/removedCodeState}" 
-                                        id="removedCode"
+                                        valueState="{/symptomsState}" 
+                                        id="symptoms"
                                         liveChange="genInfoValidation"
-                                        placeholder="{i18n>removedCodeInputText}"
-                                        value="{/removedCode}"/>
+                                        placeholder="{i18n>symptomsInputText}"
+                                        value="{/symptoms}"/>
 
-                                    <!-- field - quantity  -->
-                                    <Label text="{i18n>quantity}" />
+                                    <!-- field - condition code  -->
+                                    <Label text="{i18n>condCode}" required="true"/>
                                     <Input 
                                         valueStateText="{i18n>notNullText}"
-                                        valueState="{/quantityState}" 
+                                        valueState="{/condCodeState}" 
                                         id="quantity"
                                         liveChange="genInfoValidation"
-                                        placeholder="{i18n>quantityInputText}"
-                                        value="{/quantity}"/>
+                                        placeholder="{i18n>condCodeInputText}"
+                                        value="{/condCode}"/>
                                 </form:SimpleForm>
                             </WizardStep>
 
-                            <!-- fourth step - comments -->
-                            <WizardStep id="commentsSection" title="{i18n>commentsSection}">
+                            <!-- fourth step - item details -->
+                            <WizardStep id="itemDataStep" title="{i18n>itemDataStepTitle}">
                                 <form:SimpleForm layout="ResponsiveGridLayout" editable="true">
 
                                     <!-- field - comments  -->
-                                    <Label text="{i18n>comments}" />
-                                    <TextArea id="comments" rows="8" value="{/comments}" />
+                                    <!-- <Label text="{i18n>comments}" />
+                                    <TextArea id="comments" rows="8" value="{/comments}" /> -->
+
+                                    
                                 </form:SimpleForm>
                             </WizardStep>
 
@@ -251,14 +253,14 @@
                                         editable="false"
                                         layout="ResponsiveGridLayout">
                                         <form:content>
-                                            <Label text="{i18n>causingPart}" />
-                                            <Text id="causingPartChosen" text="{/causingPart}"></Text>
+                                            <Label text="{i18n>PFP}" />
+                                            <Text id="PFPChosen" text="{/PFP}"></Text>
 
-                                            <Label text="{i18n>removedCode}" />
-                                            <Text id="removedCodeChosen" text="{/removedCode}"></Text>
+                                            <Label text="{i18n>symptoms}" />
+                                            <Text id="symptomsChosen" text="{/symptoms}"></Text>
 
-                                            <Label text="{i18n>quantity}" />
-                                            <Text id="quantityChosen" text="{/quantity}"></Text>
+                                            <Label text="{i18n>condCode}" />
+                                            <Text id="condCodeChosen" text="{/condCode}"></Text>
                                         </form:content>
                                     </form:SimpleForm>
 
