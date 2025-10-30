@@ -5,7 +5,8 @@
     height="100%"
     xmlns:form="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
-    xmlns:u="sap.ui.unified">
+    xmlns:u="sap.ui.unified"
+    xmlns:upload="sap.m.upload">
 
     <App id="app">
         <NavContainer id="wizardNavContainer">
@@ -62,7 +63,7 @@
                                     <SearchField width="100%" class="sapUiSmallMarginTop" />
                                 </form:SimpleForm>
                                 
-                                <HBox
+                                <!-- <HBox
                                     justifyContent="End"
                                     width="100%"
                                     class="sapUiSmallMarginTop sapUiNoContentPadding sapUiTinyMarginEnd">
@@ -70,7 +71,7 @@
                                         text="{i18n>buttonText}"
                                         type="Emphasized"
                                         press="onPress" />
-                                </HBox>
+                                </HBox> -->
                             </WizardStep>
 
                             <!-- second step - Header Details -->
@@ -87,7 +88,7 @@
                                         value="{/repStartDate}"/>
 
                                     <!-- field - repair end date  -->
-                                    <Label text="{i18n>repEndDate}" required="true"/>
+                                    <Label text="{i18n>repEndDate}" />
                                     <DatePicker 
                                         id="repEndDate"
                                         displayFormat="short"
@@ -175,61 +176,130 @@
                             <WizardStep id="itemDataStep" title="{i18n>itemDataStepTitle}">
                                 <form:SimpleForm layout="ResponsiveGridLayout" editable="true">
 
-                                    <!-- field - comments  -->
-                                    <!-- <Label text="{i18n>comments}" />
-                                    <TextArea id="comments" rows="8" value="{/comments}" /> -->
-
-                                    <VBox class="sapUiSmallMarginTop" width="90%">
-                                        <Panel expandable="true" 
-                                                width="100%" 
-                                                class="sapUiResponsiveMargin"
-                                                headerText="{i18n>partsPanelTitle}">
-
+                                    <IconTabBar 
+                                        id="itemDetailsBar"
+                                        expanded="{device>/isNoPhone}"
+                                        class="sapUiResponsiveContentPadding">
+                                    
+                                        <items>
+                                            <IconTabFilter text="{i18n>parts}" key="Parts">
                                                 <Table id="partsTable" inset="false">
                                                     <columns>
-                                                        <Column> <Text text="Item Number" /> </Column>
-                                                        <Column> <Text text="Quantity" /> </Column>
-                                                        <Column> <Text text="Part Return" /> </Column>
+                                                        <Column> <Text text="{i18n>itemNumber}" /> </Column>
+                                                        <Column> <Text text="{i18n>quantity}" /> </Column>
+                                                        <Column> <Text text="{i18n>partReturn}" /> </Column>
                                                     </columns>
 
-                                                    <items>
-
-                                                    </items>
+                                                    <items></items>
                                                 </Table>
-                                        </Panel>
+                                            </IconTabFilter>
 
-                                        <Panel expandable="true" 
-                                                width="100%" 
-                                                class="sapUiResponsiveMargin"
-                                                headerText="{i18n>servicesPanelTitle}">
-                                                
-                                        </Panel>
+                                            <IconTabFilter text="{i18n>services}" key="Services">
+                                                <Text text="{i18n>servicesTable}"></Text>
+                                            </IconTabFilter>
 
-                                        <Panel expandable="true" 
-                                                width="100%" 
-                                                class="sapUiResponsiveMargin"
-                                                headerText="{i18n>subletPanelTitle}">
-                                                
-                                        </Panel>
-                                    </VBox>
+                                            <IconTabFilter text="{i18n>sublets}" key="Sublets">
+                                                <Text text="{i18n>subletsTable}"></Text>
+                                            </IconTabFilter>
+                                        </items>
+                                    </IconTabBar>
 
                                 </form:SimpleForm>
                             </WizardStep>
 
                             <!-- fifth step - upload files  -->
                             <WizardStep id="uploadSection" title="{i18n>uploadSectionTitle}">
-                                <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
 
-                                    <!-- field - upload files  -->
-                                    <Label text="{i18n>uploadSectionTitle}"></Label>
-                                    <u:FileUploader 
-                                        width="100%"
-                                        style="Emphasized"
-                                        placeholder="{i18n>uploadFileText}"
-                                        id="upload" 
-                                        value="{/upload}"
-                                    />
-                                </form:SimpleForm>
+                                    <VBox width="100%">
+                                        <IconTabBar 
+                                            id="commentsDetailsBar"
+                                            expanded="{device>/isNoPhone}"
+                                            class="sapUiResponsiveContentPadding">
+                                        
+                                            <items>
+
+                                                <!-- field - probCondition  -->
+                                                <IconTabFilter text="{i18n>probCondition}" key="probCondition">
+                                                    <TextArea id="probCondition" 
+                                                        rows="8" 
+                                                        value="{/probCondition}" 
+                                                        placeholder="{i18n>probConditionText}"
+                                                        width="100%"/>
+                                                </IconTabFilter>
+
+                                                <!-- field - probCause  -->
+                                                <IconTabFilter text="{i18n>probCause}" key="probCause">
+                                                    <TextArea id="probCause" 
+                                                        rows="8" 
+                                                        value="{/probCause}" 
+                                                        placeholder="{i18n>probCauseText}"
+                                                        width="100%"/> 
+                                                </IconTabFilter>
+
+                                                <!-- field - probDiagnosis  -->
+                                                <IconTabFilter text="{i18n>probDiagnosis}" key="probDiagnosis">
+                                                    <TextArea id="probDiagnosis" 
+                                                        rows="8" 
+                                                        value="{/probDiagnosis}" 
+                                                        placeholder="{i18n>probDiagnosisText}"
+                                                        width="100%"/> 
+                                                </IconTabFilter>
+
+                                                <!-- field - probSolution  -->
+                                                <IconTabFilter text="{i18n>probSolution}" key="probSolution">
+                                                    <TextArea id="probSolution" 
+                                                        rows="8" 
+                                                        value="{/probSolution}" 
+                                                        placeholder="{i18n>probSolutionText}"
+                                                        width="100%"/> 
+                                                </IconTabFilter>
+                                            </items>
+                                        </IconTabBar>
+                                    </VBox>
+
+                                    <VBox width="100%">
+                                        <Table 
+                                            id="attachmentTable"
+                                            sticky="HeaderToolbar"
+                                            mode="MultiSelect"
+                                            fixedLayout="false"
+                                            inset="true">
+
+                                            <headerToolbar>
+                                                <OverflowToolbar>
+                                                    <Title text="Attachments" level="H2" />
+                                                    <ToolbarSpacer />
+                                                    <SearchField width="20%" />
+                                                    <ToolbarSeparator />
+                                                    <Button icon="sap-icon://upload" text="Upload" press=".onUploadPress" />
+                                                </OverflowToolbar>
+                                            </headerToolbar>
+
+                                            <columns>
+                                                <Column id="fileName">
+                                                    <header>
+                                                        <Label text="File Name"></Label>
+                                                    </header>
+                                                </Column>
+
+                                                <Column id="id">
+                                                    <header>
+                                                        <Label text="ID"></Label>
+                                                    </header>
+                                                </Column>
+
+                                                <Column id="fileSize">
+                                                    <header>
+                                                        <Label text="File Size"></Label>
+                                                    </header>
+                                                </Column>
+                                            </columns>
+                                        </Table>
+                                    </VBox>
+
+                            
+
+                                <!-- </form:SimpleForm> -->
                             </WizardStep>
 
                             <!-- step 6 - review  -->
@@ -282,7 +352,7 @@
 
                                     <!-- step 3 details review  -->
                                     <form:SimpleForm
-                                        title="{i18n>itemDataStepTitle}"
+                                        title="{i18n>versionDataStepTitle}"
                                         editable="false"
                                         layout="ResponsiveGridLayout">
                                         <form:content>
@@ -298,15 +368,15 @@
                                     </form:SimpleForm>
 
                                     <!-- step 4 details review  -->
-                                    <form:SimpleForm
-                                        title="{i18n>commentsSection}"
+                                    <!-- <form:SimpleForm
+                                        title="{i18n>itemDataStepTitle}"
                                         editable="false"
                                         layout="ResponsiveGridLayout">
                                         <form:content>
                                             <Label text="{i18n>comments}" />
                                             <Text id="commentsChosen" text="{/comments}"></Text>
                                         </form:content>
-                                    </form:SimpleForm>
+                                    </form:SimpleForm> -->
 
                                     <!-- step 5 details review  -->
                                     <form:SimpleForm
@@ -314,8 +384,17 @@
                                         editable="false"
                                         layout="ResponsiveGridLayout">
                                         <form:content>
-                                            <Label text="{i18n>uploadSectionTitle}" />
-                                            <Text id="uploadChosen" text="{/upload}"></Text>
+                                            <Label text="{i18n>probCondition}" />
+                                            <Text id="probConditionChosen" text="{/probCondition}"></Text>
+
+                                            <Label text="{i18n>probCause}" />
+                                            <Text id="probCauseChosen" text="{/probCause}"></Text>
+
+                                            <Label text="{i18n>probDiagnosis}" />
+                                            <Text id="probDiagnosisChosen" text="{/probDiagnosis}"></Text>
+
+                                            <Label text="{i18n>probSolution}" />
+                                            <Text id="probSolutionChosen" text="{/probSolution}"></Text>
                                         </form:content>
                                     </form:SimpleForm>
                                 </content>
